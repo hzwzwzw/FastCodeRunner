@@ -3,13 +3,16 @@ import os
 import json
 
 if __name__ == '__main__':
-    print("Input your code here, end with \"///\"")
+    print("Input your code here, end with \"///\" or Ctrl+D:")
     code = ""
     while True:
-        line = input()
-        if line == "///":
+        try:
+            line = input()
+            if line == "///":
+                break
+            code += line + "\n"
+        except EOFError:
             break
-        code += line + "\n"
     language = 0 # 0 for python, 1 for c++
     if "#include" in code:
         language = 1
